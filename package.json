@@ -1,0 +1,32 @@
+{
+  "name": "crisco",
+  "version": "0.0.0",
+  "description": "crisco ======",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/darvin/crisco.git"
+  },
+  "author": "",
+  "license": "BSD",
+  "bugs": {
+    "url": "https://github.com/darvin/crisco/issues"
+  },
+  "dependencies": {
+    "express": "*",
+    "passport": "*",
+    "passport-github": "*",
+    "jade": "*",
+    "mongoose": "*"
+  },
+  "devDependencies": {
+    "mocha": "*",
+    "chai": "*",
+    "request": "*"
+
+  }
+
+}
