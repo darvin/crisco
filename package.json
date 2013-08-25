@@ -20,7 +20,8 @@
     "passport": "*",
     "passport-github": "*",
     "jade": "*",
-    "mongoose": "*"
+    "mongoose": "*",
+    "lodash": "*"
   },
   "devDependencies": {
     "mocha": "*",

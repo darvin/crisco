@@ -1,4 +1,6 @@
-crisco
+[![Build Status](https://travis-ci.org/CocoaPods/Specs.png)](https://travis-ci.org/CocoaPods/Specs)
+
+Crisco
 ======
 
 Code Reviews hosted In github COmments' COmmits
