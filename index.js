@@ -29,6 +29,7 @@ passport.use(new GitHubStrategy({
   clientSecret: GITHUB_CLIENT_SECRET,
   callbackURL: GITHUB_CALLBACK_URL
 }, function(accessToken, refreshToken, profile, done) {
+  console.error(GITHUB_CALLBACK_URL, GITHUB_CLIENT_ID);
   return process.nextTick(function() {
     models.User.loginUser(accessToken, profile, function(err, user) {
       done(null, user);
