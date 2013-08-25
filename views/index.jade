@@ -1,0 +1,32 @@
+!!!5
+html
+  head
+    title #{title} - Crisco
+    link(rel='stylesheet', href='/stylesheets/style.css')
+    link(rel="icon", type="image/png", href="/logo.png")
+
+  body
+    header
+      h1 Crisco
+    .container
+      .user
+        if user
+          = user.displayName
+          a(href="/logout") logout
+
+        else
+          a(href="/auth/github") login
+      .main-content
+        block content
+
+        if user
+          .watchtags
+            :markdown
+              Every time someone in repo you watch or in repo that belongs to your organisation mentions __#tag__ you watch, you will be included in code review
+
+          .repos
+            :markdown
+              Click on repo to enable web hooks for pushes, pull requests and commit comments. We will send request for code review any time you write __review__ word in commit message, pull request message or commit comment
+
+    footer
+      p Maintained by @darvin

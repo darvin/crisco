@@ -3,6 +3,11 @@ var NOTIFY_GROUP_EMAIL = "cr@apportable.com";
 
 
 module.exports.home = function(req, res) {
+	console.error(req.user);
+	res.render('index',{ 
+		title: 'Home' 
+	});
+
 }
 
 

@@ -11,7 +11,7 @@ var express = require('express')
   , GITHUB_CLIENT_ID = "44e8cb05744695db4acd" || process.env.GITHUB_CLIENT_ID
   , GITHUB_CLIENT_SECRET = "58bc01e40a89144c16b86199b8520f4045bdcc2a"  || process.env.GITHUB_CLIENT_SECRET
   , GITHUB_CALLBACK_URL = "" + SITE_ADDRESS + "auth/github/callback"
-  , models = require("./models");
+  , models = require("./lib/models");
 
 app = module.exports = express();
 mongoose.connect(MONGO_URL);
@@ -43,13 +43,12 @@ app.configure(function() {
   app.use(express.methodOverride());
   app.use(express.cookieParser());
   app.use(express.session({
-    secret: 'your secret here'
+    secret: '231j4lweqkfjeopf7sdf'
   }));
   app.use(passport.initialize());
   app.use(passport.session());
   app.use(function(req, res, next) {
     res.locals.baseUrl = SITE_ADDRESS;
-    res.locals.sitesPrefix = "sites/";
     res.locals.user = req.user;
     return next();
   });
@@ -89,15 +88,13 @@ app.get('/auth/github/callback', passport.authenticate('github', {
 
 app.get('/logout', function(req, res) {
   req.logout();
-  return res.redirect('/');
+  res.redirect('/');
 });
 
 
 app.get('/', routes.home);
 app.post('/', routes.pushWebhook);
 
+app.port = PORT;
 
-
-app.listen(PORT, function() {
-  return console.log("Listening on " + PORT + "\nPress CTRL-C to stop server.");
-});
+module.exports = app;

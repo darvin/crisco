@@ -2,7 +2,7 @@
   "name": "crisco",
   "version": "0.0.0",
   "description": "crisco ======",
-  "main": "server.js",
+  "main": "index.js",
   "scripts": {
     "test": "mocha"
   },
@@ -21,7 +21,8 @@
     "passport-github": "*",
     "jade": "*",
     "mongoose": "*",
-    "lodash": "*"
+    "lodash": "*",
+    "markdown": "*"
   },
   "devDependencies": {
     "mocha": "*",
