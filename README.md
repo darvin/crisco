@@ -28,8 +28,22 @@ If your work in the group of engineers on multiply projects without strict "appr
 
 ## Setup
 
-Go to  `http://your-crisco.heroku.com` and authorize it to access your Github profile.
-Add webhook `http://your-crisco.heroku.com` to yours repo.
+### Private Heroku installation
+	git clone https://github.com/darvin/crisco.git
+	cd crisco
+	heroku create --app <your crisco heroku appname>
+	git push heroku master 
+	heroku config:add GITHUB_CLIENT_ID=<your github app client id>
+	heroku config:add GITHUB_CLIENT_SECRET=<your github app client secret>
+	heroku config:add URL=http://<your crisco heroku appname>.herokuapp.com
+	heroku addons:add mongohq:sandbox
+
+Then go to  `http://<your crisco heroku appname>.heroku.com` and authorize it to access your Github profile. Add repos you wish to do code reviews in.
+
+### Public installation
+
+Just go to [Crisco site](http://crisco-review.herokuapp.com) and add repos you wish to do code reviews in.
+
 
 ### Group setup
 
