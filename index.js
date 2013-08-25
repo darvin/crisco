@@ -8,8 +8,8 @@ var express = require('express')
   , MONGO_URL = process.env.MONGOLAB_URI || process.env.MONGOHQ_URL || process.env.MONGO_URI || 'mongodb://localhost/crisco'
   , PORT = process.env.PORT || 3000
   , SITE_ADDRESS = process.env.URL || ("http://localhost:" + PORT)
-  , GITHUB_CLIENT_ID = "44e8cb05744695db4acd" || process.env.GITHUB_CLIENT_ID
-  , GITHUB_CLIENT_SECRET = "58bc01e40a89144c16b86199b8520f4045bdcc2a"  || process.env.GITHUB_CLIENT_SECRET
+  , GITHUB_CLIENT_ID = process.env.GITHUB_CLIENT_ID || "44e8cb05744695db4acd"
+  , GITHUB_CLIENT_SECRET = process.env.GITHUB_CLIENT_SECRET || "58bc01e40a89144c16b86199b8520f4045bdcc2a"
   , GITHUB_CALLBACK_URL = "" + SITE_ADDRESS + "/auth/github/callback"
   , models = require("./lib/models");
 
@@ -29,7 +29,6 @@ passport.use(new GitHubStrategy({
   clientSecret: GITHUB_CLIENT_SECRET,
   callbackURL: GITHUB_CALLBACK_URL
 }, function(accessToken, refreshToken, profile, done) {
-  console.error(GITHUB_CALLBACK_URL, GITHUB_CLIENT_ID);
   return process.nextTick(function() {
     models.User.loginUser(accessToken, profile, function(err, user) {
       done(null, user);
