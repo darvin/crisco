@@ -22,12 +22,13 @@
     "jade": "*",
     "mongoose": "*",
     "lodash": "*",
-    "markdown": "*"
+    "markdown": "*",
+    "async": "*"
   },
   "devDependencies": {
     "mocha": "*",
     "chai": "*",
-    "request": "*"
+    "supertest": "*"
 
   }
 

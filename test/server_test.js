@@ -1,8 +1,25 @@
+var app = require("../")
+var request = require('supertest');
+
 describe('Crisco server', function(){
   describe('review request', function(){
-    it('should be triggered when user puts review in commit message');
+
+    it('should be triggered when user puts review in commit message', function(done){
+      var fixture = require("./fixtures/push_webhook_payload");
+      request(app)
+        .post('/webhook')
+        .send(fixture)
+        .set('Accept', 'application/json')
+        .expect(200)
+        .end(function(err, res, body){
+          console.error(res.ok, res.body);
+          if (err) return done(err);
+          done()
+        });
+    });
     it('should be triggered when user puts review in commit comment');
     it('should be triggered when user puts review in pull request');
+
   });
 
   describe('review comments', function(){

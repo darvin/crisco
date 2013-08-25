@@ -1,6 +1,6 @@
 
 var express = require('express')
-  , routes = require('./routes')
+  , routes = require('./lib/routes')
   , passport = require('passport')
   , util = require('util')
   , mongoose = require('mongoose')
@@ -93,7 +93,7 @@ app.get('/logout', function(req, res) {
 
 
 app.get('/', routes.home);
-app.post('/', routes.pushWebhook);
+app.post('/webhook', routes.webhook);
 
 app.port = PORT;
 
