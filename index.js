@@ -27,7 +27,8 @@ passport.deserializeUser(function(obj, done) {
 passport.use(new GitHubStrategy({
   clientID: GITHUB_CLIENT_ID,
   clientSecret: GITHUB_CLIENT_SECRET,
-  callbackURL: GITHUB_CALLBACK_URL
+  callbackURL: GITHUB_CALLBACK_URL,
+  scope:["user", "repo"]
 }, function(accessToken, refreshToken, profile, done) {
   return process.nextTick(function() {
     models.User.loginUser(accessToken, profile, function(err, user) {

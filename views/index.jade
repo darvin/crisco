@@ -2,9 +2,14 @@
 html
   head
     title #{title} - Crisco
-    link(rel='stylesheet', href='/stylesheets/style.css')
+    //- link(rel='stylesheet', href='/stylesheets/style.css')
     link(rel="icon", type="image/png", href="/logo.png")
-
+    script(src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js")
+    script(src="/js/ICanHaz.min.js")
+    script(src="/js/github.js")
+    script(src="/js/async.js")
+    script(src="/js/index.js")
+    
   body
     header
       h1 Crisco
@@ -13,7 +18,9 @@ html
         if user
           = user.displayName
           a(href="/logout") logout
-
+          script(type='text/javascript').
+            document.GITHUB_OAUTH_TOKEN = "#{user.token}";
+            document.CRISCO_WEBHOOK_URL = "#{baseUrl}/webhook";
         else
           a(href="/auth/github") login
       .main-content
@@ -27,6 +34,14 @@ html
           .repos
             :markdown
               Click on repo to enable web hooks for pushes, pull requests and commit comments. We will send request for code review any time you write __review__ word in commit message, pull request message or commit comment
-
+            #repos-list
     footer
       p Maintained by @darvin
+
+
+script(id="repo", type="text/html")
+  li
+    a(href="{{ html_url }}") {{ full_name }} 
+    input.repo-webhook-button(type="checkbox") Webhook?
+    .repo-private Private? {{ private }}
+

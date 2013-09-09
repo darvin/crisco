@@ -23,7 +23,8 @@
     "mongoose": "*",
     "lodash": "*",
     "markdown": "*",
-    "async": "*"
+    "async": "*",
+    "github-api":"git://github.com/darvin/github.git"
   },
   "devDependencies": {
     "mocha": "*",
